@@ -117,9 +117,17 @@ async def predict_demo(request: Request, demo_image: str = Form(...)):
 
 @app.get("/health")
 async def health_check():
-    """Health check endpoint"""
-    return {"status": "healthy", "service": "HWCS API"}
+    """Health check endpoint for monitoring"""
+    from utils import model, scaler, label_encoder
+    models_loaded = all([model is not None, scaler is not None, label_encoder is not None])
+    return {
+        "status": "healthy" if models_loaded else "degraded",
+        "service": "HWCS API",
+        "models_loaded": models_loaded
+    }
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    import os
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=False)
