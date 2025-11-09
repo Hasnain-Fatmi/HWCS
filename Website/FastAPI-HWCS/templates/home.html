@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HWCS - Handwriting Classification System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/home.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <img src="/static/images/img9.png" alt="HWCS Logo">
+        <span>HWCS</span>
+    </div>
+    <div class="header-tagline">AI-Powered Writer Identification</div>
+</header>
+
+<div class="body-container">
+
+    <div class="left-section">
+        <div class="badge">Machine Learning Powered</div>
+        <h1>Handwriting<br> Classification <br>System</h1>
+        <p class="description">Uncover the Author Behind Every Stroke<br>Dive into the world of handwriting analysis with our revolutionary classification system.<br>Explore the Fascinating World of Handwriting Identification</p>
+
+        <div class="demo-notice">
+            <i class="fas fa-info-circle"></i>
+            <div>
+                <strong>Demo System:</strong> This is a proof-of-concept trained to identify handwriting from three specific writers (Hasnain, Mehdy, and Umair). Try the demo samples below to see it in action!
+            </div>
+        </div>
+
+        <form method="post" action="/predict" enctype="multipart/form-data">
+            <label for="imageInput" class="upload-area">
+                <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                <span id="uploadText">Drag & Drop to Upload File<br> OR<br> Click to Upload File</span>
+                <input type="file" id="imageInput" name="image" accept="image/*" required>
+            </label>
+            <button type="submit" class="submit-button">
+                <i class="fas fa-paper-plane"></i> Analyze Handwriting
+            </button>
+        </form>
+    </div>
+
+    <div class="right-section">
+        <img src="/static/images/img5.png" alt="Handwriting Analysis Illustration">
+    </div>
+</div>
+
+<section class="demo-section">
+    <div class="demo-container">
+        <h2>Try the Demo</h2>
+        <p class="demo-description">Click on any handwriting sample below to see the AI classification in action. The system is trained to identify these three writers.</p>
+
+        <!-- Hasnain's Samples -->
+        <div class="writer-category">
+            <h3><i class="fas fa-user"></i> Hasnain's Handwriting</h3>
+            <div class="demo-grid">
+                <div class="demo-card" onclick="predictDemo('hasnain_sample.jpg')">
+                    <img src="/static/demo_images/hasnain_sample.jpg" alt="Hasnain Sample 1">
+                    <div class="demo-overlay">
+                        <i class="fas fa-search"></i>
+                        <span>Analyze</span>
+                    </div>
+                </div>
+                <div class="demo-card" onclick="predictDemo('hasnain_sample2.jpg')">
+                    <img src="/static/demo_images/hasnain_sample2.jpg" alt="Hasnain Sample 2">
+                    <div class="demo-overlay">
+                        <i class="fas fa-search"></i>
+                        <span>Analyze</span>
+                    </div>
+                </div>
+                <div class="demo-card" onclick="predictDemo('hasnain_sample3.jpg')">
+                    <img src="/static/demo_images/hasnain_sample3.jpg" alt="Hasnain Sample 3">
+                    <div class="demo-overlay">
+                        <i class="fas fa-search"></i>
+                        <span>Analyze</span>
+                    </div>
+                </div>
+                <div class="demo-card" onclick="predictDemo('hasnain_sample4.jpg')">
+                    <img src="/static/demo_images/hasnain_sample4.jpg" alt="Hasnain Sample 4">
+                    <div class="demo-overlay">
+                        <i class="fas fa-search"></i>
+                        <span>Analyze</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mehdy's Samples -->
+        <div class="writer-category">
+            <h3><i class="fas fa-user"></i> Mehdy's Handwriting</h3>
+            <div class="demo-grid">
+                <div class="demo-card" onclick="predictDemo('mehdy_sample.jpg')">
+                    <img src="/static/demo_images/mehdy_sample.jpg" alt="Mehdy Sample 1">
+                    <div class="demo-overlay">
+                        <i class="fas fa-search"></i>
+                        <span>Analyze</span>
+                    </div>
+                </div>
+                <div class="demo-card" onclick="predictDemo('mehdy_sample2.jpg')">
+                    <img src="/static/demo_images/mehdy_sample2.jpg" alt="Mehdy Sample 2">
+                    <div class="demo-overlay">
+                        <i class="fas fa-search"></i>
+                        <span>Analyze</span>
+                    </div>
+                </div>
+                <div class="demo-card" onclick="predictDemo('mehdy_sample3.jpg')">
+                    <img src="/static/demo_images/mehdy_sample3.jpg" alt="Mehdy Sample 3">
+                    <div class="demo-overlay">
+                        <i class="fas fa-search"></i>
+                        <span>Analyze</span>
+                    </div>
+                </div>
+                <div class="demo-card" onclick="predictDemo('mehdy_sample4.jpg')">
+                    <img src="/static/demo_images/mehdy_sample4.jpg" alt="Mehdy Sample 4">
+                    <div class="demo-overlay">
+                        <i class="fas fa-search"></i>
+                        <span>Analyze</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Umair's Samples -->
+        <div class="writer-category">
+            <h3><i class="fas fa-user"></i> Umair's Handwriting</h3>
+            <div class="demo-grid">
+                <div class="demo-card" onclick="predictDemo('umair_sample.jpg')">
+                    <img src="/static/demo_images/umair_sample.jpg" alt="Umair Sample 1">
+                    <div class="demo-overlay">
+                        <i class="fas fa-search"></i>
+                        <span>Analyze</span>
+                    </div>
+                </div>
+                <div class="demo-card" onclick="predictDemo('umair_sample2.jpg')">
+                    <img src="/static/demo_images/umair_sample2.jpg" alt="Umair Sample 2">
+                    <div class="demo-overlay">
+                        <i class="fas fa-search"></i>
+                        <span>Analyze</span>
+                    </div>
+                </div>
+                <div class="demo-card" onclick="predictDemo('umair_sample3.jpg')">
+                    <img src="/static/demo_images/umair_sample3.jpg" alt="Umair Sample 3">
+                    <div class="demo-overlay">
+                        <i class="fas fa-search"></i>
+                        <span>Analyze</span>
+                    </div>
+                </div>
+                <div class="demo-card" onclick="predictDemo('umair_sample4.jpg')">
+                    <img src="/static/demo_images/umair_sample4.jpg" alt="Umair Sample 4">
+                    <div class="demo-overlay">
+                        <i class="fas fa-search"></i>
+                        <span>Analyze</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden form for demo predictions -->
+    <form id="demoForm" method="post" action="/predict-demo" style="display: none;">
+        <input type="hidden" name="demo_image" id="demoImageInput">
+    </form>
+</section>
+
+<footer>
+    <div class="footer-container">
+        <div class="copyright">
+            <p>© 2024 Handwriting Classification System - HWCS. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('imageInput').addEventListener('change', function() {
+        if (this.files && this.files[0]) {
+            var fileName = this.files[0].name;
+            var uploadAreaText = document.getElementById('uploadText');
+            uploadAreaText.innerHTML = '<i class="fas fa-check-circle"></i> ' + fileName;
+            uploadAreaText.style.color = '#10b981';
+        }
+    });
+
+    function predictDemo(imageName) {
+        // Set the demo image name in the hidden form
+        document.getElementById('demoImageInput').value = imageName;
+
+        // Submit the form
+        document.getElementById('demoForm').submit();
+    }
+</script>
+</body>
+
+</html>
