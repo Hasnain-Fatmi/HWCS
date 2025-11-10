@@ -1,6 +1,5 @@
 
-
-###**Handwriting Classification System Documentation**
+**Handwriting Classification System Documentation**
 
 
 **Introduction**
