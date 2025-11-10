@@ -1,15 +1,7 @@
 
 
-**Handwriting Classification System Documentation**
+###**Handwriting Classification System Documentation**
 
-**By:**
-**Muhammad Hasnain Fatmi 				(21L-1773)**
-
-**Muhammad Mehdy Hasnain 	(21L-1784)**
-
-**Umair Bin Asim 				(21L-1847)**
-
-**Section – 6F**
 
 **Introduction**
 
